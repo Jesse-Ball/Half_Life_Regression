@@ -1,7 +1,8 @@
 # Half_Life_Regression
 Initial repo for POC of enhanced HLR scheduling model
 
-Data and initial base is from: \n
+## Data and initial base is from:
+
 @inproceedings{settles.acl16,
     Author = {B. Settles and B. Meeder},
     Booktitle = {Proceedings of the Association for Computational Linguistics (ACL)},
