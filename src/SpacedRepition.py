@@ -5,6 +5,7 @@ import math
 import os
 import random
 import sys
+from utils import pclip, hclip, mean, mae, spearmanr
 
 
 from collections import defaultdict, namedtuple
@@ -32,8 +33,8 @@ class SpacedRepetitionModel(object):
         self.hlwt = hlwt
         self.l2wt = l2wt
         self.sigma = sigma
-        self.train = train
-        self.test = test
+        self.train_set = train
+        self.test_set = test
 
     def predict(self, inst, base=2.):
         if self.method == 'hlr':
@@ -79,8 +80,6 @@ class SpacedRepetitionModel(object):
                 self.weights[k] -= rate * self.l2wt * self.weights[k] / self.sigma**2
                 # increment feature count for learning rate
                 self.fcounts[k] += 1
-        elif self.method == 'leitner' or self.method == 'pimsleur':
-            pass
         elif self.method == 'lr':
             p, _ = self.predict(inst)
             err = p - inst.p
@@ -94,11 +93,11 @@ class SpacedRepetitionModel(object):
                 # increment feature count for learning rate
                 self.fcounts[k] += 1
 
-    def train(self, trainset):
+    def train(self):
         if self.method == 'leitner' or self.method == 'pimsleur':
             return
-        random.shuffle(trainset)
-        for inst in trainset:
+        random.shuffle(self.train)
+        for inst in self.train:
             self.train_update(inst)
 
     def losses(self, inst):

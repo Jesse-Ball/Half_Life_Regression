@@ -289,6 +289,7 @@ if __name__ == "__main__":
 
     # train model & print preliminary evaluation info
     model = SpacedRepetitionModel(method=args.method, omit_h_term=args.t)
+    embed()
     model.train(trainset)
     model.eval(testset, 'test')
 
