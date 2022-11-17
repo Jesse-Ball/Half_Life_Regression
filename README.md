@@ -1,5 +1,5 @@
 # Half_Life_Regression
-Initial repo for POC of enhanced HLR scheduling model
+Initial repo for POC of enhanced HLR scheduling model. This repo contains a few dead ends but overall paints a good picture in terms of logic in scheduling 
 
 ## Data and initial base is from:
 
